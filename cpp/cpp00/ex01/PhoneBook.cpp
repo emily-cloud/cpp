@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:16:56 by hai               #+#    #+#             */
-/*   Updated: 2025/02/03 08:51:51 by huahua           ###   ########.fr       */
+/*   Updated: 2025/02/03 14:56:48 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
-PhoneBook::PhoneBook() : contactCount(0), oldestIndex(0)
-{
-	std::cout << "PhoneBook constructor called" << std::endl;
-}
-
-PhoneBook::~PhoneBook()
-{
-	std::cout << "PhoneBook destructor called" << std::endl;
-}
 
 void PhoneBook::start()
 {
@@ -50,6 +40,16 @@ void PhoneBook::start()
 	}
 }
 
+PhoneBook::PhoneBook() : contactCount(0), oldestIndex(0)
+{
+	std::cout << "PhoneBook constructor called" << std::endl;
+}
+
+PhoneBook::~PhoneBook()
+{
+	std::cout << "PhoneBook destructor called" << std::endl;
+}
+
 void PhoneBook::add()
 {
 	if (contactCount == 8)
@@ -68,9 +68,27 @@ void PhoneBook::search()
 {
 	int index;
 
+	if(contactCount == 0)
+	{
+		std::cout << "No contacts available" << std::endl;
+		return;
+	}
+	else
+	{
+		std::cout << std::setw(10) << std::right << "Index"
+			<< " | " << std::setw(10) << std::right << "First Name"
+			<< " | " << std::setw(10) << std::right << "Last Name "
+			<< " | " << std::setw(10) << std::right << "Nickname "
+			<< std::endl;
+		for(int i = 0; i < contactCount; i++)
+		{
+			contacts[i].displayDetails(i);
+		}
+	}
+
 	while(1)
 	{
-		std::cout << "Enter search index: ";
+		std::cout << "Enter search index (from 1 to 8): ";
 		if(!(std::cin >> index) || index <= 0 || index > 8)
 		{
 			std::cout << "Invalid index, please enter a valid index between 1 to 8" << std::endl;
@@ -80,7 +98,7 @@ void PhoneBook::search()
 		}
 		else
 		{
-			if(contacts[index - 1].displayDetails(index - 1) == 0)
+			if(contacts[index - 1].displayFullContact(index - 1) == 0)
 			{
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

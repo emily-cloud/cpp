@@ -6,7 +6,7 @@
 /*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 17:07:37 by hai               #+#    #+#             */
-/*   Updated: 2025/02/02 18:22:39 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/03 14:04:51 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Contact
 	public:
 		void setDetails();
 		int displayDetails(int index) const;
+		int displayFullContact(int index) const;
 	private:
 		std::string		firstName;
 		std::string		lastName;
