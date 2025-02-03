@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:16:56 by hai               #+#    #+#             */
-/*   Updated: 2025/02/02 18:42:13 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/03 08:51:51 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PhoneBook::PhoneBook() : contactCount(0), oldestIndex(0)
 {
-
+	std::cout << "PhoneBook constructor called" << std::endl;
 }
 
 PhoneBook::~PhoneBook()
@@ -66,22 +66,21 @@ void PhoneBook::add()
 
 void PhoneBook::search()
 {
-	std::cout << "Search" << std::endl;
 	int index;
 
 	while(1)
 	{
 		std::cout << "Enter search index: ";
-		if(!(std::cin >> index) || index < 0 || index >= 8)
+		if(!(std::cin >> index) || index <= 0 || index > 8)
 		{
-			std::cout << "Invalid index, please enter a valid index" << std::endl;
+			std::cout << "Invalid index, please enter a valid index between 1 to 8" << std::endl;
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue;
 		}
 		else
 		{
-			if(contacts[index].displayDetails(index) == 0)
+			if(contacts[index - 1].displayDetails(index - 1) == 0)
 			{
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
