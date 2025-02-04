@@ -3,26 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:53:30 by hai               #+#    #+#             */
-/*   Updated: 2025/02/04 16:46:24 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/04 20:42:19 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
 #include "Weapon.hpp"
 
-// HumanA::HumanA():
-// {
-// }
-
-HumanA::HumanA(std::string name, Weapon& weapon):name(name), weapon(weapon)
+HumanA::HumanA(std::string name, Weapon& weapon):name(name)
 {
 	this->name = name;
-	this->weapon = weapon;
+	this->weapon = &weapon;
 	std::cout << this->name << " is born" << std::endl;
-	std::cout << this->name << " has a " << this->weapon.getType() << std::endl;
 }
 HumanA::~HumanA()
 {
@@ -31,5 +26,5 @@ HumanA::~HumanA()
 
 void HumanA::attack()
 {
-	std::cout << this->name << " attacks with his " << this->weapon.getType() << std::endl;
+	std::cout << this->name << " attacks with his " << weapon->getType() << std::endl;
 }
