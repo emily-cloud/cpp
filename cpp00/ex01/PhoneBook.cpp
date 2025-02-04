@@ -6,7 +6,7 @@
 /*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 16:16:56 by hai               #+#    #+#             */
-/*   Updated: 2025/02/03 14:56:48 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/04 11:09:35 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,16 @@ void PhoneBook::start()
 
 PhoneBook::PhoneBook() : contactCount(0), oldestIndex(0)
 {
-	std::cout << "PhoneBook constructor called" << std::endl;
+	std::cout << "Your phonebook is ready" << std::endl;
+	std::cout << "Command ADD: add new contact to phonebook" << std::endl;
+	std::cout << "Command SEARCH: search for exicted contact from phonebook" << std::endl;
+	std::cout << "Command EXIT: exit and clean phonebook" << std::endl;
+	std::cout << "-------------------Let us start-------------------" << std::endl;
 }
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << "PhoneBook destructor called" << std::endl;
+	std::cout << "Your phonebook date has been cleaned" << std::endl;
 }
 
 void PhoneBook::add()
