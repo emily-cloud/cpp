@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 15:53:30 by hai               #+#    #+#             */
-/*   Updated: 2025/02/04 20:42:19 by huahua           ###   ########.fr       */
+/*   Updated: 2025/02/05 11:15:41 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ HumanA::HumanA(std::string name, Weapon& weapon):name(name)
 {
 	this->name = name;
 	this->weapon = &weapon;
-	std::cout << this->name << " is born" << std::endl;
+	std::cout << this->name << " is born and armed with " << weapon.getType()<< std::endl;
 }
 HumanA::~HumanA()
 {

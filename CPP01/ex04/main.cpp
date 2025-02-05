@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 15:57:24 by hai               #+#    #+#             */
-/*   Updated: 2025/02/05 11:12:56 by hai              ###   ########.fr       */
+/*   Created: 2025/02/05 10:23:08 by hai               #+#    #+#             */
+/*   Updated: 2025/02/05 11:52:57 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#include "Replace.hpp"
 
-#include "Weapon.hpp"
-
-class HumanB
+int main(int argc, char **argv)
 {
-	private:
-		std::string name;
-		Weapon* weapon;
+	if (argc != 4)
+	{
+		std::cout << "Usage: ./ex04 <filename> <string1> <string2>" << std::endl;
+		return 1;
+	}
 
-	public:
-		HumanB(std::string name);
-		~HumanB();
-		void attack();
-		void setWeapon(Weapon& weapon);
-};
+	std::string filename = argv[1];
+	std::string s1 = argv[2];
+	std::string s2 = argv[3];
 
-#endif
+	if (s1.length() == 0)
+	{
+		std::cout << "Error: string1 is empty" << std::endl;
+		return 1;
+	}
+
+	replaceString(filename, s1, s2);
+	return 0;
+}
+
