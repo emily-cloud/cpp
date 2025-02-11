@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:11:29 by hai               #+#    #+#             */
-/*   Updated: 2025/02/10 12:14:28 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/11 20:07:25 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ Point::Point(const float x, const float y)
 	this->y = y;
 }
 
+Point::~Point()
+{
+}
+
 Point::Point( const Point &src )
 {
 	*this = src;
@@ -35,4 +39,14 @@ Point &Point::operator=( const Point &src )
 		this->y = src.y;
 	}
 	return *this;
+}
+
+float Point::getX() const
+{
+	return (this->x);
+}
+
+float Point::getY() const
+{
+	return (this->y);
 }
