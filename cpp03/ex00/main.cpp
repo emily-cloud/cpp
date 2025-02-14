@@ -5,25 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 09:41:49 by hai               #+#    #+#             */
-/*   Updated: 2025/02/12 08:41:47 by hai              ###   ########.fr       */
+/*   Created: 2025/02/14 10:37:37 by hai               #+#    #+#             */
+/*   Updated: 2025/02/14 13:53:02 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
-#include "Point.hpp"
+#include "ClapTrap.hpp"
 
-int main( void )
+int main()
 {
-	Point a(0, 0);
-	Point b(4, 0);
-	Point c(0, 4);
-	Point point(1, 2);
+	ClapTrap A("A");
+	ClapTrap B("B");
+	ClapTrap C("C");
 
-	if (bsp(a, b, c, point))
-		std::cout << "Point is inside the triangle" << std::endl;
-	else
-		std::cout << "Point is outside the triangle" << std::endl;
+	A.attack("enemy");
+	A.takeDamage(5);
+	A.attack("enemy");
+	A.beRepaired(3);
+
+	B.attack("enemy");
+	B.takeDamage(12);
+	B.attack("enemy");
+	B.beRepaired(7);
+
+	C.attack("enemy");
+	C.takeDamage(8);
+	C.attack("enemy");
+	C.beRepaired(7);
 
 	return 0;
 }

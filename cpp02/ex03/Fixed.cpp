@@ -81,14 +81,12 @@ Fixed Fixed::operator-( const Fixed &src )
 
 Fixed Fixed::operator*( const Fixed &src )
 {
-	this->rawBits = this->rawBits * src.getRawBits() / (1 << this->fractionalBits);
-	return *this;
+	return Fixed(this->toFloat() * src.toFloat());
 }
 
 Fixed Fixed::operator/( const Fixed &src )
 {
-	this->rawBits = this->rawBits / src.getRawBits();
-	return *this;
+	return Fixed(this->toFloat() / src.toFloat());
 }
 
 bool Fixed::operator>( const Fixed &src )
