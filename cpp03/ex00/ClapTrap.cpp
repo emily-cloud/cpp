@@ -6,7 +6,7 @@
 /*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:27:14 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 14:01:38 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/14 16:05:45 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap( void )
 {
-	std::cout << "ClapTrap " << " is born!" << std::endl;
+	std::cout << "ClapTrap default constructor called" << "\n" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)

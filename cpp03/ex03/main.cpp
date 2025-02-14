@@ -6,51 +6,39 @@
 /*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:37:37 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 16:50:49 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/14 18:09:04 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include "ScavTrap.hpp"
 
 int main()
 {
-	ScavTrap A("A");
-	ScavTrap B("B");
-	ScavTrap C("C");
-	ScavTrap D;
+	DiamondTrap A("A");
+	DiamondTrap B("B");
+	DiamondTrap C("C");
+	DiamondTrap D;
 	D = A;
-	ScavTrap E(B);
+	DiamondTrap E(B);
 
-	A.attack("enemy");
-	A.takeDamage(5);
-	A.attack("enemy");
-	A.guardGate();
-	A.beRepaired(3);
 
-	B.attack("enemy");
-	B.takeDamage(12);
-	B.attack("enemy");
-	B.guardGate();
-	B.beRepaired(7);
+	A.whoAmI();
+	std::cout << std::endl;
 
-	C.attack("enemy");
-	C.takeDamage(8);
-	C.attack("enemy");
-	C.guardGate();
-	C.beRepaired(7);
+	B.whoAmI();
+	std::cout << std::endl;
 
-	D.attack("enemy");
-	D.takeDamage(8);
-	D.attack("enemy");
-	D.guardGate();
-	D.beRepaired(7);
+	C.whoAmI();
+	std::cout << std::endl;
 
-	E.attack("enemy");
-	E.takeDamage(8);
-	E.attack("enemy");
-	E.guardGate();
-	E.beRepaired(7);
+	D.whoAmI();
+	std::cout << std::endl;
+
+	E.whoAmI();
+	std::cout << std::endl;
 
 	return 0;
 }

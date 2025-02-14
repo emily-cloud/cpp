@@ -6,12 +6,15 @@
 /*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:27:14 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 17:03:35 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/14 18:24:08 by hai              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include "ScavTrap.hpp"
+
 
 ClapTrap::ClapTrap( void )
 {
@@ -27,7 +30,7 @@ ClapTrap::ClapTrap(std::string name)
 	std::cout << "ClapTrap " << name << " is born!" << std::endl;
 	std::cout << "Hit Points: " << hitPoints << std::endl;
 	std::cout << "Energy Points: " << energyPoints << std::endl;
-	std::cout << "Attack Damage: " << attackDamage << "\n" << std::endl;
+	std::cout << "Attack Damage: " << attackDamage << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap const &src )
@@ -35,16 +38,6 @@ ClapTrap::ClapTrap( ClapTrap const &src )
 {
 	std::cout << "ClapTrap " << name << " is copied!" << std::endl;
 }
-/*
-ClapTrap::ClapTrap ( ClapTrap const &src )
-{
-	*this = src; // call assignment operator
-	std::cout << "ClapTrap " << name << " is copied!" << std::endl;
-	std::cout << "Hit Points: " << hitPoints << std::endl;
-	std::cout << "Energy Points: " << energyPoints << std::endl;
-	std::cout << "Attack Damage: " << attackDamage << "\n" << std::endl;
-}
-*/
 
 ClapTrap::~ClapTrap( void )
 {
