@@ -6,7 +6,7 @@
 /*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 17:33:02 by hai               #+#    #+#             */
-/*   Updated: 2025/02/19 21:46:59 by huahua           ###   ########.fr       */
+/*   Updated: 2025/02/19 22:02:58 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,20 @@ DiamondTrap::DiamondTrap(std::string name) :
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& src) :
-    ClapTrap(src),
-    ScavTrap(src),
-    FragTrap(src)
+    ClapTrap(),
+    ScavTrap(),
+    FragTrap()
 {
-    *this = src;
-    std::cout << "DiamondTrap copy constructor called" << std::endl;
+	std::cout << "DiamondTrap copy constructor called" << std::endl;
+	std::cout << "DiamondTrap " << src.name << " is copied" << std::endl;
+    this->name = src.name;
+	setHitPoints(src.getHitPoints());
+	setEnergyPoints(src.getEnergyPoints());
+	setAttackDamage(src.getAttackDamage());
+	ClapTrap::setName(name + "_clap_name");
+	std::cout << "DiamondTrap " << name << " Hit Points: " << getHitPoints() << std::endl;
+	std::cout << "DiamondTrap " << name << " Energy Points: " << getEnergyPoints()<< std::endl;
+	std::cout << "DiamondTrap " << name << " Attack Damage: " << getAttackDamage() << "\n" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap() {
