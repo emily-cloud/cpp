@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:27:14 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 17:24:57 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/19 11:28:32 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "FragTrap.hpp"
 
 ClapTrap::ClapTrap( void )
 {

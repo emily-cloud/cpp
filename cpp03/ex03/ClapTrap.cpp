@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:27:14 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 18:24:08 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/19 12:12:57 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
-#include "ScavTrap.hpp"
-
 
 ClapTrap::ClapTrap( void )
 {
@@ -28,9 +24,9 @@ ClapTrap::ClapTrap(std::string name)
 	this->energyPoints = 10;
 	this->attackDamage = 2;
 	std::cout << "ClapTrap " << name << " is born!" << std::endl;
-	std::cout << "Hit Points: " << hitPoints << std::endl;
-	std::cout << "Energy Points: " << energyPoints << std::endl;
-	std::cout << "Attack Damage: " << attackDamage << std::endl;
+	std::cout << "ClapTrap " << name << " Hit Points: " << hitPoints << std::endl;
+	std::cout << "ClapTrap " << name << " Energy Points: " << energyPoints << std::endl;
+	std::cout << "ClapTrap " << name << " Attack Damage: " << attackDamage << "\n" << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap const &src )
@@ -64,10 +60,10 @@ void ClapTrap::attack( const std::string& target )
 		std::cout << "ClapTrap " << name << " is dead!" << "\n" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+	std::cout << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
 	this->energyPoints -= 1;
-	std::cout << "ClapTrap " << name << " has " << energyPoints << " energy points left!" << std::endl;
-	std::cout << "ClapTrap " << name << " has " << hitPoints << " hit points left!" << "\n" << std::endl;
+	std::cout << name << " has " << energyPoints << " energy points left!" << std::endl;
+	std::cout << name << " has " << hitPoints << " hit points left!" << "\n" << std::endl;
 	return;
 }
 

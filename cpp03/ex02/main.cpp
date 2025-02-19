@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:37:37 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 17:26:38 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/19 11:29:57 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
@@ -19,8 +19,8 @@ int main()
 	FragTrap B("B");
 	FragTrap C("C");
 	FragTrap D;
-	D = A;
-	FragTrap E(B);
+	D = A;//assignment operator
+	FragTrap E = B;//copy constructor
 
 	A.attack("enemy");
 	A.takeDamage(5);

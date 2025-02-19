@@ -3,27 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:27:14 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 17:03:35 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/19 11:29:13 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
 ClapTrap::ClapTrap( void )
 {
 	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name): name(name),
+	hitPoints(10), energyPoints(10), attackDamage(2)
 {
-	this->name = name;
-	this->hitPoints = 10;
-	this->energyPoints = 10;
-	this->attackDamage = 2;
 	std::cout << "ClapTrap " << name << " is born!" << std::endl;
 	std::cout << "Hit Points: " << hitPoints << std::endl;
 	std::cout << "Energy Points: " << energyPoints << std::endl;
@@ -35,16 +31,6 @@ ClapTrap::ClapTrap( ClapTrap const &src )
 {
 	std::cout << "ClapTrap " << name << " is copied!" << std::endl;
 }
-/*
-ClapTrap::ClapTrap ( ClapTrap const &src )
-{
-	*this = src; // call assignment operator
-	std::cout << "ClapTrap " << name << " is copied!" << std::endl;
-	std::cout << "Hit Points: " << hitPoints << std::endl;
-	std::cout << "Energy Points: " << energyPoints << std::endl;
-	std::cout << "Attack Damage: " << attackDamage << "\n" << std::endl;
-}
-*/
 
 ClapTrap::~ClapTrap( void )
 {

@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:37:37 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 16:50:49 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/19 11:29:31 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
 int main()
@@ -19,8 +18,8 @@ int main()
 	ScavTrap B("B");
 	ScavTrap C("C");
 	ScavTrap D;
-	D = A;
-	ScavTrap E(B);
+	D = A; //assignment operator
+	ScavTrap E = B;//copy constructor
 
 	A.attack("enemy");
 	A.takeDamage(5);

@@ -6,7 +6,7 @@
 /*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:46:59 by hai               #+#    #+#             */
-/*   Updated: 2025/02/19 11:35:38 by huahua           ###   ########.fr       */
+/*   Updated: 2025/02/19 11:29:00 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ ScavTrap::ScavTrap( std::string const& name)
 	setHitPoints(100);
 	setEnergyPoints(50);
 	setAttackDamage(20);
-	std::cout << "ScavTrap " << getName() << " Hit Points: " << getHitPoints() << std::endl;
-	std::cout << "ScavTrap " << getName() << " Energy Points: " << getEnergyPoints() << std::endl;
-	std::cout << "ScavTrap " << getName() << " Attack Damage: " << getAttackDamage() << "\n" << std::endl;
+	std::cout << "Hit Points: " << getHitPoints() << std::endl;
+	std::cout << "Energy Points: " << getEnergyPoints() << std::endl;
+	std::cout << "Attack Damage: " << getAttackDamage() << "\n" << std::endl;
 }
 
 

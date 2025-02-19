@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 10:27:14 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 16:05:45 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/19 12:46:07 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap( void )
 {
-	std::cout << "ClapTrap default constructor called" << "\n" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -24,18 +24,18 @@ ClapTrap::ClapTrap(std::string name)
 	this->energyPoints = 10;
 	this->attackDamage = 2;
 	std::cout << "ClapTrap " << name << " is born!" << std::endl;
-	std::cout << "Hit Points: " << hitPoints << std::endl;
-	std::cout << "Energy Points: " << energyPoints << std::endl;
-	std::cout << "Attack Damage: " << attackDamage << "\n" << std::endl;
+	std::cout << "ClapTrap " << name << " Hit Points: " << hitPoints << std::endl;
+	std::cout << "ClapTrap " << name  << " Energy Points: " << energyPoints << std::endl;
+	std::cout << "ClapTrap " << name << " Attack Damage: " << attackDamage << "\n" << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap const &src )
+	: name(src.name), hitPoints(src.hitPoints), energyPoints(src.energyPoints), attackDamage(src.attackDamage)
 {
-	*this = src;
 	std::cout << "ClapTrap " << name << " is copied!" << std::endl;
-	std::cout << "Hit Points: " << hitPoints << std::endl;
-	std::cout << "Energy Points: " << energyPoints << std::endl;
-	std::cout << "Attack Damage: " << attackDamage << "\n" << std::endl;
+	std::cout << "ClapTrap " << name << " Hit Points: " << hitPoints << std::endl;
+	std::cout << "ClapTrap " << name << " Energy Points: " << energyPoints << std::endl;
+	std::cout << "ClapTrap " << name << " Attack Damage: " << attackDamage << "\n" << std::endl;
 }
 
 ClapTrap::~ClapTrap( void )
@@ -53,6 +53,9 @@ ClapTrap &ClapTrap::operator=( ClapTrap const &src )
 		this->attackDamage = src.attackDamage;
 	}
 	std::cout << "ClapTrap " << name << " is assigned!" << std::endl;
+	std::cout << "ClapTrap " << name << " Hit Points: " << hitPoints << std::endl;
+	std::cout << "ClapTrap " << name << " Energy Points: " << energyPoints << std::endl;
+	std::cout << "ClapTrap " << name << " Attack Damage: " << attackDamage << "\n" << std::endl;
 	return *this;
 }
 
@@ -99,10 +102,50 @@ void ClapTrap::beRepaired( unsigned int amount )
 		std::cout << "ClapTrap " << name << " is dead!, No need to repaired!" << "\n" << std::endl;
 		return ;
 	}
-	std::cout << "ClapTrap " << name << " is being repaired!" << std::endl;
+	std::cout << "ClapTrap " << name << " is being repaired with amount: " << amount << std::endl;
 	this->hitPoints += amount;
 	this->energyPoints -= 1;
 	std::cout << "ClapTrap " << name << " has " << energyPoints << " energy points left!" << std::endl;
 	std::cout << "ClapTrap " << name << " has " << hitPoints << " hit points!" << "\n" << std::endl;
 	return;
+}
+
+void ClapTrap::setName( std::string const& name )
+{
+	this->name = name;
+}
+
+void ClapTrap::setHitPoints( unsigned int hitPoints )
+{
+	this->hitPoints = hitPoints;
+}
+
+void ClapTrap::setEnergyPoints( unsigned int energyPoints )
+{
+	this->energyPoints = energyPoints;
+}
+
+void ClapTrap::setAttackDamage( unsigned int attackDamage )
+{
+	this->attackDamage = attackDamage;
+}
+
+std::string ClapTrap::getName() const
+{
+	return this->name;
+}
+
+unsigned int ClapTrap::getHitPoints() const
+{
+	return this->hitPoints;
+}
+
+unsigned int ClapTrap::getEnergyPoints() const
+{
+	return this->energyPoints;
+}
+
+unsigned int ClapTrap::getAttackDamage() const
+{
+	return this->attackDamage;
 }

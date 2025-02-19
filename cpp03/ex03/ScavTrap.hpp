@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hai <hai@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:19:45 by hai               #+#    #+#             */
-/*   Updated: 2025/02/14 18:21:04 by hai              ###   ########.fr       */
+/*   Updated: 2025/02/19 13:50:52 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
-#include "FragTrap.hpp"
-
 class ScavTrap : virtual public ClapTrap
 {
+	protected:
+		unsigned int hitPoints;
+		unsigned int energyPoints;
+		unsigned int attackDamage;
+
 	public:
 		ScavTrap();
 		ScavTrap( std::string const& name);
@@ -26,14 +29,7 @@ class ScavTrap : virtual public ClapTrap
 		ScavTrap&	operator=( ScavTrap const& src );
 
 		void	guardGate();
-		void	setScavName( std::string const& name );
-		void	setScavHitPoints( unsigned int hitPoints );
-		void	setScavEnergyPoints( unsigned int energyPoints );
-		void	setScavAttackDamage( unsigned int attackDamage );
-		std::string	getScavName() const;
-		unsigned int	getScavHitPoints() const;
-		unsigned int	getScavEnergyPoints() const;
-		unsigned int	getScavAttackDamage() const;
 };
+
 
 #endif //SCAVTRAP_HPP
