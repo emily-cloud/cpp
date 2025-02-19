@@ -6,7 +6,7 @@
 /*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:46:59 by hai               #+#    #+#             */
-/*   Updated: 2025/02/19 13:56:56 by huahua           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:11:00 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ ScavTrap::~ScavTrap()
 
 void	ScavTrap::guardGate()
 {
-	std::cout << getName() << " has entered in Gate keeper mode!" << "\n" << std::endl;
+	std::cout << getName() << " has entered in Gate keeper mode!" << std::endl;
 }

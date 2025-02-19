@@ -6,7 +6,7 @@
 /*   By: huahua <huahua@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 16:20:02 by hai               #+#    #+#             */
-/*   Updated: 2025/02/19 13:45:02 by huahua           ###   ########.fr       */
+/*   Updated: 2025/02/19 14:11:42 by huahua           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys()
 {
-	std::cout << getName() << " high fives guys!" << "\n" << std::endl;
+	std::cout << getName() << " high fives guys!" << std::endl<< std::endl;
 }
 
 
