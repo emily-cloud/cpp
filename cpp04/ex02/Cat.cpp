@@ -18,7 +18,6 @@ Cat::Cat(const Cat& src): AAnimal(src)
 	if(this != &src)
 	{
 		type = src.type;
-		delete brain;
 		brain = new Brain(*src.brain);
 	}
 	std::cout << "Class Cat: " << src.type << " is copied!" << std::endl;

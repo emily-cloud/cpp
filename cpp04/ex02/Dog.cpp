@@ -18,7 +18,6 @@ Dog::Dog(const Dog& src): AAnimal(src)
 	if(this != &src)
 	{
 		type = src.type;
-		delete brain;
 		brain = new Brain(*src.brain);
 	}
 	std::cout << "Class Dog: " << src.type << " is copied!" << std::endl;

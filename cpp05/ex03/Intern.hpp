@@ -6,6 +6,8 @@
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
+#include <map>
+#include <string>
 
 class Intern
 {
@@ -15,6 +17,9 @@ class Intern
 		~Intern();
 		Intern & operator=(Intern const & src);
 		AForm * makeForm(std::string const & formName, std::string const & target);
+		AForm * createRobotomyRequestForm(std::string const & target);
+		AForm * createPresidentialPardonForm(std::string const & target);
+		AForm * createShrubberyCreationForm(std::string const & target);
 		class FormNotFoundException: public std::exception
 		{
 			public:

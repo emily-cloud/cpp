@@ -4,7 +4,7 @@
 
 int main()
 {
-	int dog_count = 0;
+	/*int dog_count = 0;
 	int cat_count = 0;
 
 	const AAnimal* array[10];
@@ -38,6 +38,13 @@ int main()
 		std::cout << "Deleting AAnimal[" << i + 1 << "]: "<< array[i]->getType() << std::endl;
 		delete array[i];
 		std::cout << std::endl;
-	}
+	}*/
+
+	//test copy constructor is deep copy or shallow copy
+	Dog dog1("dog1");
+	Dog dog2(dog1);
+
+	return 0;
+
 }
 
