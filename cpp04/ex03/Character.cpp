@@ -3,25 +3,24 @@
 
 Character::Character()
 {
-	for (int i = 0; i < 4; i++)
-		materia[i] = NULL;
-	//std::cout << "Character default constructor" << std::endl;
 }
 
-Character::Character(std::string const  &name): name(name)
+Character::Character(std::string const  &name):name(name)
 {
 	for (int i = 0; i < 4; i++)
 		materia[i] = NULL;
+
 	//std::cout << "Character constructor is called, " << name << " is born!" << std::endl;
 }
 
-Character::Character(Character const & src)
+Character::Character(Character const & src): ICharacter(), name(src.name)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (materia[i])
-			delete materia[i];
-		materia[i] = src.materia[i] ? src.materia[i]->clone() : nullptr;
+		if (src.materia[i])
+			materia[i] =  src.materia[i]->clone();
+		else
+			materia[i] = NULL;
 	}
 	//std::cout << "Character " << src.getName() << " is copied!" << std::endl;
 }
@@ -33,24 +32,32 @@ Character::~Character()
 		if (materia[i])
 		{
 			delete materia[i];
-			materia[i] = nullptr;
 		}
 	}
-	//std::cout << "Character destruction called" << std::endl;
+
+	for (size_t i = 0; i < materiaList.size(); i++)
+	{
+		if (materiaList[i])
+		{
+			delete materiaList[i];
+			materiaList[i] = NULL;
+		}
+	}
+	materiaList.clear();
 }
 
 Character & Character::operator=(Character const & src)
 {
+
 	if (this != &src)
 	{
 		for (int i = 0; i < 4; i++)
 		{
 			if (materia[i])
 				delete materia[i];
-			materia[i] = src.materia[i] ? src.materia[i]->clone() : nullptr;
+			materia[i] = src.materia[i] ? src.materia[i]->clone() : NULL;
 		}
 	}
-	//std::cout << "Character " << src.getName() << " is assigned!" << std::endl;
 	return *this;
 }
 
@@ -65,24 +72,45 @@ void Character::equip(AMateria* m)
 	{
 		if (!materia[i])
 		{
-			materia[i] = m->clone();
-			break;
+			materia[i] = m;
+			std::cout << "Character " << getName() << " equips with " << m->getType() << std::endl;
+			return;
 		}
 	}
-	//std::cout << "Character " << getName() << " equips " << m->getType() << std::endl;
+	std::cout << "Character " << getName() << " equips with " << m->getType() << std::endl;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || !materia[idx])
+	{
+		std::cout << "index is out of bound" << std::endl;
 		return;
-	materia[idx] = NULL;
-	//std::cout << "debug Character " << getName() << " unequips " << idx << std::endl;
+	}
+	else if (!materia[idx])
+	{
+		std::cout << "No maretia is exacted at index" << std::endl;
+		return;
+	}
+	else
+	{
+		materiaList.push_back(materia[idx]);
+		std::cout << "Character " << getName() << " unequips with " << materia[idx]->getType() << std::endl;
+		materia[idx] = NULL;
+	}
 }
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx >= 4 || !materia[idx])
+		if (idx < 0 || idx >= 4 || !materia[idx])
+	{
+		std::cout << "index is out of bound" << std::endl;
 		return;
+	}
+	else if (!materia[idx])
+	{
+		std::cout << "No maretia is exacted at index" << std::endl;
+		return;
+	}
 	materia[idx]->use(target);
 	//std::cout << "debug Character " << getName() << " uses " << idx << " on " << target.getName() << std::endl;
 }

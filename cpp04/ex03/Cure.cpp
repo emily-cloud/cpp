@@ -13,7 +13,7 @@ Cure::Cure(std::string const type)
 	//std::cout << "Cure constructor is called, " << type << " is created!" << std::endl;
 }
 
-Cure::Cure(Cure const & src)
+Cure::Cure(Cure const & src): AMateria()
 {
 	type = src.type;
 	//std::cout << "Cure " << src.type << " is copied!" << std::endl;

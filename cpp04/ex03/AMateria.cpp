@@ -19,6 +19,7 @@ AMateria::AMateria(AMateria const & src)
 
 AMateria::~AMateria()
 {
+
 	//std::cout << "AMateria " << type << " is destroyed!" << std::endl;
 }
 

@@ -5,6 +5,7 @@
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
 # include <iostream>
+# include <vector>
 
 class Character: public ICharacter
 {
@@ -21,6 +22,7 @@ class Character: public ICharacter
 	private:
 		std::string name;
 		AMateria* materia[4];
+		std::vector<AMateria*> materiaList;
 };
 
 #endif

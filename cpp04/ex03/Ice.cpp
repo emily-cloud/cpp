@@ -12,7 +12,7 @@ Ice::Ice(std::string const &type): AMateria()
 	this->type = type;
 	//std::cout << "Ice constructor is called, " << type << " is created!" << std::endl;
 }
-Ice::Ice(Ice const & src)
+Ice::Ice(Ice const & src):AMateria()
 {
 	type = src.type;
 	//std::cout << "Ice " << src.type << " is copied!" << std::endl;

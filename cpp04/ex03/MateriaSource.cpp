@@ -17,7 +17,7 @@ MateriaSource::MateriaSource(MateriaSource const & src): IMateriaSource()
 		{
 			if (materia[i])
 				delete materia[i];
-			materia[i] = src.materia[i] ? src.materia[i]->clone() : nullptr;
+			materia[i] = src.materia[i] ? src.materia[i]->clone() : NULL;
 		}
 	}
 	//std::cout << "MateriaSource " << count << " is copied!" << std::endl;
@@ -30,10 +30,8 @@ MateriaSource::~MateriaSource()
 		if (materia[i])
 		{
 			delete materia[i];
-			materia[i] = nullptr;
 		}
 	}
-	//std::cout << "MateriaSource " << count << " is destroyed!" << std::endl;
 }
 
 MateriaSource & MateriaSource::operator=(MateriaSource const & src)
@@ -45,37 +43,39 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & src)
 		{
 			if (materia[i])
 				delete materia[i];
-			materia[i] = src.materia[i] ? src.materia[i]->clone() : nullptr;
+			materia[i] = src.materia[i] ? src.materia[i]->clone() : NULL;
 		}
 	}
-	//std::cout << "MateriaSource " << count << " is assigned!" << std::endl;
 	return *this;
 }
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	if(m == nullptr)
+	if(m == NULL)
 		return;
 	if (count < 4)
 	{
-		materia[count++] = m->clone();
+		materia[count++] = m;
+		std::cout << "MateriaSource " << m->getType() << " is learned " << m->getType() << std::endl;
 	}
-	//std::cout << "MateriaSource " << count << " learns " << m->getType() << std::endl;
+	else
+	{
+		std::cout << "MateriaSource is full, " << m->getType() << " is not learned" << std::endl;
+		delete m;
+	}
 }
 
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-    for (int i = 0; i < 4; i++)
-    {
-        if (materia[i] != nullptr && materia[i]->getType() == type)
-        {
-            //std::cout << "MateriaSource creates " << type << std::endl;
-            return materia[i]->clone();
-        }
-    }
-   // std::cout << "MateriaSource cannot create " << type << std::endl;
-    return nullptr;
+	for (int i = 0; i < 4; i++)
+	{
+		if (materia[i] && materia[i]->getType() == type)
+		{
+			std::cout << "MateriaSource " << materia[i]->getType() << " is created" << std::endl;
+			return materia[i]->clone();
+		}
+	}
+	std::cout << "MateriaSource " << type << " is not created" << std::endl;
+	return NULL;
 }
-
-

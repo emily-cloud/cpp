@@ -7,8 +7,18 @@ ICharacter::ICharacter()
 }
 ICharacter::ICharacter(ICharacter const & src)
 {
-	(void)src;
+	*this = src;
 	//std::cout << "ICharacter " << src.getName() << " is copied!" << std::endl;
+}
+
+ICharacter & ICharacter::operator=(ICharacter const & src)
+{
+	if (this != &src)
+	{
+		*this = src;
+	}
+	//std::cout << "ICharacter " << src.getName() << " is assigned!" << std::endl;
+	return *this;
 }
 
 ICharacter::~ICharacter()

@@ -7,13 +7,16 @@ IMateriaSource::IMateriaSource()
 }
 IMateriaSource::IMateriaSource(IMateriaSource const & src)
 {
-	(void)src;
+	*this = src;
 	//std::cout << "IMateriaSource " << src.getName() << " is copied!" << std::endl;
 }
 
 IMateriaSource & IMateriaSource::operator=(IMateriaSource const & src)
 {
-	(void)src;
+	if (this != &src)
+	{
+		*this = src;
+	}
 	//std::cout << "IMateriaSource " << src.getName() << " is assigned!" << std::endl;
 	return *this;
 }
