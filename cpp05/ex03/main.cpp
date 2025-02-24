@@ -14,9 +14,9 @@ int main()
 	Bureaucrat b2("b2", 50);
 	Bureaucrat b3("b3", 2);
 
-	AForm* form1 = nullptr; // RobotomyRequestForm 72, 45
-	AForm* form2 = nullptr; // PresidentialPardonForm 25, 5
-	AForm* form3 = nullptr; // ShrubberyCreationForm 145, 137
+	AForm* form1 = NULL; // RobotomyRequestForm 72, 45
+	AForm* form2 = NULL; // PresidentialPardonForm 25, 5
+	AForm* form3 = NULL; // ShrubberyCreationForm 145, 137
 
 	try
 	{
