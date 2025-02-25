@@ -70,3 +70,35 @@ AForm* Intern::makeForm(std::string const & formName, std::string const & target
 	// If not found, throw an exception
 	throw FormNotFoundException();
 }
+
+// Another way to implement makeForm method, do not use function pointers and creat functions for each form
+/*
+AForm* Intern::makeForm(std::string const & formName, std::string const & target)
+{
+	std::string forms[] = { "presidential pardon", "robotomy request", "shrubbery creation" };
+	int index = -1;
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (formName == forms[i])
+		{
+			index = i;
+			break;
+		}
+	}
+
+	switch (index)
+	{
+		case 0:
+			return new PresidentialPardonForm(target);
+		case 1:
+			return new RobotomyRequestForm(target);
+		case 2:
+			return new ShrubberyCreationForm(target);
+		default:
+			break;
+	}
+	// If not found, throw an exception
+	throw FormNotFoundException();
+}
+	*/
