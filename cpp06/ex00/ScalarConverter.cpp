@@ -26,14 +26,14 @@ const char* ScalarConverter::InvalidInputException::what() const throw()
 
 void ScalarConverter::convert(std::string const &literal)
 {
-	if(is_int(literal))
-		print_int(literal);
-	else if(is_float(literal))
-		print_float(literal);
-	else if(is_double(literal))
-		print_double(literal);
-	else if(is_char(literal))
-		print_char(literal);
+	if(isInt(literal))
+		convertInt(literal);
+	else if(isDouble(literal))
+		convertDouble(literal);
+	else if(isFloat(literal))
+		convertFloat(literal);
+	else if(isChar(literal))
+		convertChar(literal);
 	else
 		throw InvalidInputException();
 }

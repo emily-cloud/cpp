@@ -7,7 +7,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 RM = rm -rf
 
 SRCS = main.cpp ScalarConverter.cpp CheckType.cpp \
-		PrintValue.cpp
+		Convert.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

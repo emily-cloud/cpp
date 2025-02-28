@@ -33,13 +33,13 @@ class	ScalarConverter
 		};
 };
 
-bool is_int(std::string const &str);
-bool is_float(std::string const &str);
-bool is_double(std::string const &str);
-bool is_char(std::string const &str);
-void print_int(std::string const &literal);
-void print_float(std::string const &literal);
-void print_double(std::string const &literal);
-void print_char(std::string const &literal);
+bool isChar(std::string const &str);
+bool isInt(std::string const &str);
+bool isFloat(std::string const &str);
+bool isDouble(std::string const &str);
+void convertChar(std::string const &literal);
+void convertInt(std::string const &literal);
+void convertFloat(std::string const &literal);
+void convertDouble(std::string const &literal);
 
 #endif
