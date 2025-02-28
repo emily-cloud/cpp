@@ -13,7 +13,7 @@
 #include <cctype>
 
 
-bool isFloat(const std::string &str)
+/*bool isFloat(const std::string &str)
 {
 	if (str.empty()) return false;
 
@@ -140,3 +140,56 @@ int main() {
     return 0;
 }
 */
+
+#include <iostream>
+#include <sstream>
+#include <cstdlib>  // for atof
+#include <string>
+
+void convertFloat(std::string const &literal)
+{
+    // Handle special float values
+    if (literal == "nanf" || literal == "inff" || literal == "-inff" || literal == "+inff")
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: " << literal << std::endl;
+        std::cout << "double: " << literal.substr(0, literal.size() - 1) << std::endl; // Remove 'f'
+        return;
+    }
+
+    // Check if the original string contains 'e' (scientific notation)
+    bool isScientific = (literal.find('e') != std::string::npos || literal.find('E') != std::string::npos);
+
+    // Convert to float
+    float f = std::atof(literal.c_str());
+
+    // Convert float to string
+    std::ostringstream oss;
+    oss << f;
+    std::string floatStr = oss.str();
+
+    // Ensure `.0` is only added if necessary
+    if (!isScientific && floatStr.find('.') == std::string::npos)
+    {
+        floatStr += ".0";
+    }
+
+    // Output results
+    std::cout << "char: impossible" << std::endl;
+    std::cout << "int: " << static_cast<int>(f) << std::endl;
+    std::cout << "float: " << floatStr << "f" << std::endl;
+    std::cout << "double: " << floatStr << std::endl;
+}
+
+int main(int argc, char **argv)
+{
+    if (argc != 2)
+    {
+        std::cerr << "Usage: " << argv[0] << " <number>" << std::endl;
+        return 1;
+    }
+
+    convertFloat(argv[1]);
+    return 0;
+}

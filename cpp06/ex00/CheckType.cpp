@@ -20,8 +20,6 @@ You can also use unsigned int to hold only non-negative numbers.*/
 
 bool isInt(std::string const &str)
 {
-	if (str.empty()) return false;
-
 	if (str.length() == 1 && !isdigit(str[0]))
 		return false;
 
@@ -35,11 +33,13 @@ bool isInt(std::string const &str)
 			return false;
 	}
 
-	try{
-		std::stoi(str);
+	try
+	{
+		std::atoi(str.c_str());
 	}
 	catch (const std::exception &e)
 	{
+		std::cerr << e.what() << '\n';
 		return false;
 	}
 
@@ -57,16 +57,16 @@ A valid floating-point literal must have:
 
 bool isFloat(const std::string &str)
 {
-	if (str.empty()) return false;
-
 	if (str == "nanf" || str == "inff" || str == "-inff" || str == "+inff" || str == "inff")
 		return true;
+
 	size_t i = 0;
 	bool hasDot = false;
 	bool hasDigit = false;
 	bool hasExp = false;
 
-	if (str[i] == '+' || str[i] == '-') i++;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
 
 	for (; i < str.length(); i++)
 	{
@@ -95,17 +95,9 @@ bool isFloat(const std::string &str)
 			}
 		}
 		else if ((str[i] == 'f'  || str[i] == 'F') && i == str.length() - 1 && hasDigit)
-			return hasDigit;  // "123.45f" case
+			return (hasDigit && hasDot) || (hasDigit && hasExp);  // "123.45f" case
 		else
 			return false;
-	}
-	try
-	{
-		std::stof(str);
-	}
-	catch(const std::exception& e)
-	{
-		return false;
 	}
 	return (hasDigit && hasDot) || (hasDigit && hasExp); // Ensure there’s at least one digit & a decimal
 }
@@ -136,14 +128,18 @@ bool isDouble(std::string const &str)
 		else
 			return true;
 	}
+
 	try
 	{
-		std::stod(str);
+		char* end;
+		std::strtod(str.c_str(), &end);
 	}
 	catch(const std::exception& e)
 	{
+		std::cerr << e.what() << '\n';
 		return false;
 	}
+
 	return false;
 }
 
