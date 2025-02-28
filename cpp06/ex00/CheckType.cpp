@@ -32,17 +32,6 @@ bool isInt(std::string const &str)
 		if (!isdigit(str[i]))
 			return false;
 	}
-
-	try
-	{
-		std::atoi(str.c_str());
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << e.what() << '\n';
-		return false;
-	}
-
 	return true;
 }
 /*
@@ -57,7 +46,7 @@ A valid floating-point literal must have:
 
 bool isFloat(const std::string &str)
 {
-	if (str == "nanf" || str == "inff" || str == "-inff" || str == "+inff" || str == "inff")
+	if (str == "nanf" || str == "-nanf" || str == "inff" || str == "-inff" || str == "+inff" || str == "inff")
 		return true;
 
 	size_t i = 0;
@@ -118,7 +107,7 @@ Special Cases for double:
 
 bool isDouble(std::string const &str)
 {
-	if (str == "nan" || str == "inf" || str == "-inf" || str == "+inf" || str == "inf")
+	if (str == "nan" || str == "-nan" || str == "inf" || str == "-inf" || str == "+inf" || str == "inf")
 		return true;
 
 	if(isFloat(str))
@@ -128,18 +117,6 @@ bool isDouble(std::string const &str)
 		else
 			return true;
 	}
-
-	try
-	{
-		char* end;
-		std::strtod(str.c_str(), &end);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-		return false;
-	}
-
 	return false;
 }
 
