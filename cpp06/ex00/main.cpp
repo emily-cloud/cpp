@@ -1,7 +1,7 @@
 
 #include "ScalarConverter.hpp"
 
-
+/*
 int main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -14,9 +14,10 @@ int main(int argc, char **argv)
 
 	return (0);
 }
+	*/
 
 //test code
-/*
+
 int main(int argc, char **argv) {
 	(void)argv;
 
@@ -37,14 +38,14 @@ int main(int argc, char **argv) {
 	ScalarConverter::convert("10.0f");
 	ScalarConverter::convert("10.0");
 	ScalarConverter::convert("10");
-	ScalarConverter::convert("f");
-	ScalarConverter::convert("ff");
+	//ScalarConverter::convert("f");
+	//ScalarConverter::convert("ff");
 	ScalarConverter::convert("inf");
 	ScalarConverter::convert("-inf");
 	ScalarConverter::convert("inff");
 	ScalarConverter::convert("-inff");
 
-	ScalarConverter::convert("hey");
+	//ScalarConverter::convert("hey");
 	ScalarConverter::convert(" ");
 	ScalarConverter::convert("98");
 	ScalarConverter::convert("-98.f");
@@ -71,5 +72,5 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
-*/
+
 

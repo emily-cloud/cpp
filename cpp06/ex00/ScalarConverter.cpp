@@ -31,8 +31,17 @@ int ScalarConverter::typeCheck(const std::string &str) {
         return -1;
 
     // Check if the string is a char
-    if (str.size() == 1 && !std::isdigit(str[0]))
+    if (str.length() == 1)
         return 0;
+
+	if (str == "nan" || str == "-nan" || str == "+nan" ||
+		str == "inf" || str == "-inf" || str == "+inf" ||
+		str == "nanf" || str == "-nanf" || str == "+nanf" ||
+		str == "inff" || str == "-inff" || str == "+inff")
+	{
+		return (str.back() == 'f') ? 2 : 3;
+	}
+
 
     // Check if the string is a int
     std::strtoll(str.c_str(), &endptr, 10);
@@ -40,8 +49,9 @@ int ScalarConverter::typeCheck(const std::string &str) {
         return 1;
 
     // Check if the string is a float
-    std::strtof(str.c_str(), &endptr);
-    if (strcmp(endptr, "f") == 0) {
+	std::strtof(str.c_str(), &endptr);
+    if (*endptr == 'f' && *(endptr + 1) == '\0')
+	{
         return 2;
     }
 
@@ -54,60 +64,64 @@ int ScalarConverter::typeCheck(const std::string &str) {
     return -1;
 }
 
-void ScalarConverter::convert(const std::string &str) {
+void ScalarConverter::convert(const std::string &str)
+{
     char charValue = 0;
-    long int intValue = 0;
+    long long intValue = 0;
     float floatValue = 0;
     double doubleValue = 0;
 
     switch (typeCheck(str)) {
-        case 0:
+        case 0:// char
             charValue = str[0];
             intValue = static_cast<int>(charValue);
             floatValue = static_cast<float>(charValue);
             doubleValue = static_cast<double>(charValue);
             break;
-        case 1:
+        case 1: // int
             intValue = std::strtol(str.c_str(), NULL, 10);
             charValue = static_cast<char>(intValue);
             floatValue = static_cast<float>(intValue);
             doubleValue = static_cast<double>(intValue);
             break;
-        case 2:
+        case 2:// float
             floatValue = std::strtof(str.c_str(), NULL);
             charValue = static_cast<char>(floatValue);
             intValue = static_cast<int>(floatValue);
             doubleValue = static_cast<double>(floatValue);
             break;
-        case 3:
+        case 3:// double
             doubleValue = std::strtod(str.c_str(), NULL);
             charValue = static_cast<char>(doubleValue);
             intValue = static_cast<int>(doubleValue);
             floatValue = static_cast<float>(doubleValue);
             break;
-		default:
+		default:// invalid
 			throw InvalidInputException();
 			break;
         }
 
-	if (doubleValue > 32  &&  doubleValue < 126 )
-		std::cout  << "char: " << static_cast<char>(doubleValue) << std::endl;
-	else if ((doubleValue <= 32 && doubleValue >= 0) || (doubleValue >= 126 && doubleValue <= 255))
-		std::cout << "char: Non displayable" << std::endl;
-	else
-		std::cout << "char: impossible" << std::endl;
-
-    if (doubleValue > std::numeric_limits<int>::min() && doubleValue < std::numeric_limits<int>::max()) {
-        std::cout << "int: " << intValue << std::endl;
-    } else {
-        std::cout << "int: impossible" << std::endl;
-    }
-
-	if (doubleValue > std::numeric_limits<float>::min() && doubleValue < std::numeric_limits<float>::max()) {
-		std::cout << "float: " << std::fixed << std::setprecision(1) << floatValue << "f" << std::endl;
+	if (doubleValue >= std::numeric_limits<char>::min() && doubleValue <= std::numeric_limits<char>::max()) {
+		if (std::isprint(static_cast<unsigned char>(doubleValue))) {
+			std::cout << "char: '" << static_cast<char>(doubleValue) << "'" << std::endl;
+		} else {
+			std::cout << "char: Non displayable" << std::endl;
+		}
 	} else {
-		std::cout << "float: impossible" << std::endl;
+		std::cout << "char: impossible" << std::endl;
 	}
 
+
+	if (doubleValue > std::numeric_limits<int>::min() && doubleValue < std::numeric_limits<int>::max())
+	{
+ 		std::cout << "int: " << intValue << std::endl;
+	}
+	else
+	{
+		std::cout << "int: impossible" << std::endl;
+	}
+
+
+	std::cout << "float: " << std::fixed << std::setprecision(1) << floatValue << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(1) << doubleValue << std::endl;
 }
