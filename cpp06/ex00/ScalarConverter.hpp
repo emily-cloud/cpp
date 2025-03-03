@@ -23,6 +23,7 @@ class	ScalarConverter
 		ScalarConverter(ScalarConverter const &src);
 		~ScalarConverter();
 		ScalarConverter & operator=(ScalarConverter const & src);
+		static int typeCheck(std::string const &literal);
 
 	public:
 		static void	convert(std::string const &literal );
@@ -33,13 +34,11 @@ class	ScalarConverter
 		};
 };
 
-bool isChar(std::string const &str);
-bool isInt(std::string const &str);
-bool isFloat(std::string const &str);
-bool isDouble(std::string const &str);
-void convertChar(std::string const &literal);
-void convertInt(std::string const &literal);
-void convertFloat(std::string const &literal);
-void convertDouble(std::string const &literal);
+void printChar(std::string str);
+void printInt(std::string literal);
+void printFloat(std::string literal);
+void printDouble(std::string literal);
+void printSpecialCase(std::string literal);
+
 
 #endif

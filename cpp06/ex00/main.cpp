@@ -15,9 +15,6 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-
-
-
 //test code
 /*
 int main(int argc, char **argv) {
@@ -32,22 +29,22 @@ int main(int argc, char **argv) {
 	ScalarConverter::convert("-nan");
 	ScalarConverter::convert("nanf");
 	ScalarConverter::convert("42.0");
-	//ScalarConverter::convert("42f");
+	ScalarConverter::convert("42f");
 	ScalarConverter::convert("256");
 	ScalarConverter::convert("256");
-	//ScalarConverter::convert("256f");
+	ScalarConverter::convert("256f");
 	ScalarConverter::convert("256.0");
 	ScalarConverter::convert("10.0f");
 	ScalarConverter::convert("10.0");
 	ScalarConverter::convert("10");
 	ScalarConverter::convert("f");
-	//ScalarConverter::convert("ff");
+	ScalarConverter::convert("ff");
 	ScalarConverter::convert("inf");
 	ScalarConverter::convert("-inf");
 	ScalarConverter::convert("inff");
 	ScalarConverter::convert("-inff");
 
-	//ScalarConverter::convert("hey");
+	ScalarConverter::convert("hey");
 	ScalarConverter::convert(" ");
 	ScalarConverter::convert("98");
 	ScalarConverter::convert("-98.f");
@@ -70,6 +67,7 @@ int main(int argc, char **argv) {
 	ScalarConverter::convert("-4.5e-10");
 	ScalarConverter::convert("4.5e10");
 	ScalarConverter::convert("4.5e-10");
+
 
 	return 0;
 }
