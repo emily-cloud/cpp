@@ -1,3 +1,5 @@
+#ifndef DATA_HPP
+# define DATA_HPP
 
 
 struct Data
@@ -6,5 +8,8 @@ struct Data
 	float   f;
 	double  d;
 	char    c;
+
+	Data();
 };
 
+#endif

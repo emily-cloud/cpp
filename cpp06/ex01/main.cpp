@@ -1,7 +1,6 @@
 
 #include "Serializer.hpp"
 
-
 int main()
 {
 	Data* data = new Data;
@@ -17,7 +16,7 @@ int main()
 	std::cout << "c: " << data->c << std::endl;
 	std::cout << "address: "<< data <<std::endl;
 
-	uintptr_t serialized = Serializer::serialize(data);
+	unsigned long serialized = Serializer::serialize(data);
 	Data* deserialized = Serializer::deserialize(serialized);
 
 	std::cout << "Deserialized Data:" << std::endl;
@@ -27,7 +26,6 @@ int main()
 	std::cout << "c: " << deserialized->c << std::endl;
 	std::cout << "address: "<< deserialized <<std::endl;
 
+	delete data;
 	return 0;
-
-
 }

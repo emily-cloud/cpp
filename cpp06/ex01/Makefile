@@ -6,7 +6,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 RM = rm -rf
 
-SRCS = main.cpp Serializer.cpp
+SRCS = main.cpp Serializer.cpp Data.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
