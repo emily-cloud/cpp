@@ -1,7 +1,6 @@
 
 #include "ScalarConverter.hpp"
 
-/*
 int main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -14,10 +13,9 @@ int main(int argc, char **argv)
 
 	return (0);
 }
-	*/
 
 //test code
-
+/*
 int main(int argc, char **argv) {
 	(void)argv;
 
@@ -69,8 +67,7 @@ int main(int argc, char **argv) {
 	ScalarConverter::convert("4.5e10");
 	ScalarConverter::convert("4.5e-10");
 
-
 	return 0;
 }
-
+*/
 

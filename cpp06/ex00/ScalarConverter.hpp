@@ -34,11 +34,4 @@ class	ScalarConverter
 		};
 };
 
-void printChar(std::string str);
-void printInt(std::string literal);
-void printFloat(std::string literal);
-void printDouble(std::string literal);
-void printSpecialCase(std::string literal);
-
-
 #endif

@@ -1,6 +1,7 @@
 
 #include "ScalarConverter.hpp"
 
+
 ScalarConverter::ScalarConverter()
 {
 }
@@ -22,6 +23,7 @@ const char* ScalarConverter::InvalidInputException::what() const throw()
 {
 	return ("Invalid specifier input");
 }
+
 // 1 is char, 2 is int, 3 is float, 4 is double, -1 is invalid
 int ScalarConverter::typeCheck(const std::string &str) {
     char *endptr;
@@ -31,22 +33,22 @@ int ScalarConverter::typeCheck(const std::string &str) {
         return -1;
 
     // Check if the string is a char
-    if (str.length() == 1)
+    if (str.length() == 1 && !isdigit(str[0]))
+    {
         return 0;
+    }
 
-	if (str == "nan" || str == "-nan" || str == "+nan" ||
-		str == "inf" || str == "-inf" || str == "+inf" ||
-		str == "nanf" || str == "-nanf" || str == "+nanf" ||
-		str == "inff" || str == "-inff" || str == "+inff")
+	if (str == "nan" || str == "-nan" || str == "+nan" || str == "inf" || str == "-inf" || str == "+inf" || str == "nanf" || str == "-nanf" || str == "+nanf" ||  str == "inff" || str == "-inff" || str == "+inff")
 	{
-		return (str.back() == 'f') ? 2 : 3;
+		return (str[str.length() - 1]== 'f') ? 2 : 3;
 	}
-
 
     // Check if the string is a int
     std::strtoll(str.c_str(), &endptr, 10);
     if (*endptr == '\0')
+    {
         return 1;
+    }
 
     // Check if the string is a float
 	std::strtof(str.c_str(), &endptr);
@@ -111,8 +113,7 @@ void ScalarConverter::convert(const std::string &str)
 		std::cout << "char: impossible" << std::endl;
 	}
 
-
-	if (doubleValue > std::numeric_limits<int>::min() && doubleValue < std::numeric_limits<int>::max())
+	if (doubleValue >= std::numeric_limits<int>::min() && doubleValue <= std::numeric_limits<int>::max())
 	{
  		std::cout << "int: " << intValue << std::endl;
 	}
@@ -120,7 +121,6 @@ void ScalarConverter::convert(const std::string &str)
 	{
 		std::cout << "int: impossible" << std::endl;
 	}
-
 
 	std::cout << "float: " << std::fixed << std::setprecision(1) << floatValue << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(1) << doubleValue << std::endl;
