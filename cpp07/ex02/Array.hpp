@@ -78,7 +78,6 @@ Array<T> &Array<T>::operator=(Array<T> const &src)
     {
         delete[] array;
         size = src.size;
-    
         array = new T[size];
         for(int i = 0; i < size; i++)
         {
@@ -102,7 +101,7 @@ T &Array<T>::operator[](int index)
     return array[index];
 }
 
-// Operator [] Overload (Const)
+
 template <typename T>
 const T &Array<T>::operator[](int index) const
 {
