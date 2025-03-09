@@ -14,6 +14,7 @@ int main()
 
    ::easyfind(vector, 5);
    ::easyfind(list, 5);
+   std::cout << std::endl;
    ::easyfind(vector, 42);
    ::easyfind(list, 42);
 
