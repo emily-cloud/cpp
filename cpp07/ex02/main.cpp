@@ -31,10 +31,6 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-    delete &intArray;
-    delete &floatArray;
-    delete &doubleArray;
-    
     return 0;
 
 }

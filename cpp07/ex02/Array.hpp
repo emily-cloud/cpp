@@ -31,22 +31,21 @@ template <typename T> class Array
 template <typename T>
  Array<T>::Array()
 {
-    array = NULL;
+    array = new T[0];
     size = 0;
 }
 
 template <typename T> 
 Array<T>::Array(int n)
 {
-    size = n;
     if (n <= 0)
     {
-        array = NULL;
+        array = new T[0];
         size = 0;
     }
     else
     {
-         array = new T[n]();
+         array = new T[n];
          size = n;
     }      
 }

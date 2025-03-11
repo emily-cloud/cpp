@@ -1,6 +1,12 @@
 
 #include "Iter.hpp"
 
+template <typename T>
+void func(T const &x)
+{
+    std::cout << x << std::endl;
+}
+
 int main()
 {
     std::string array1[] = {"hi", "it is a test", "it works" };
@@ -13,7 +19,7 @@ int main()
     ::iter(array1, lenght1, func<std::string>);
     std::cout << std::endl;
 
-    std::cout << "Processing array1:" << std::endl;
+    std::cout << "Processing array2:" << std::endl;
     ::iter(array2, lenght2, func<int>);
     std::cout << std::endl;
 

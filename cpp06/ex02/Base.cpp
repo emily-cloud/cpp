@@ -61,6 +61,7 @@ void identify(Base *p)
     catch(const std::exception &e)
     {
     }
+    return;
 }
 
 void identify(Base &p)
@@ -94,4 +95,5 @@ void identify(Base &p)
     catch(const std::exception &e)
     {
     }
+    return;
 }

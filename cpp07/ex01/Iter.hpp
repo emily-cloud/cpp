@@ -4,19 +4,11 @@
 #include <iostream>
 #include <string>
 
-template <typename T> void iter(T array[], int length, void (*func)(T&) )
+template <typename T, typename F> void iter(T array[], int length, F function)
 {
     for (int i = 0; i < length; i++)
-        func(array[i]);
+        function(array[i]);
     return;
 };
-
-template <typename T> void func( T& element)
-{
-    
-    std::cout << element << std::endl;
-    
-    return;
-}
 
 #endif
