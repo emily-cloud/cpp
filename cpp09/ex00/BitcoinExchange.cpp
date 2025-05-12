@@ -78,34 +78,14 @@ void BitcoinExchange::calculatePrintExchange(const std::string &filename){
         valueStr.erase(0, valueStr.find_first_not_of(" \t"));
         valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
 
-        bool isAllDigits = true;
-        for (std::string::const_iterator it = valueStr.begin(); it != valueStr.end(); ++it) {
-        if (!isdigit(*it) && *it != '.' && *it != '-') {  // Allow decimal points and negative signs
-            isAllDigits = false;
-            break;
-        }
-        }
-        if (!isAllDigits) {
-            std::cerr << "Error: not a digit number" << std::endl;
-            continue;
-        }
- 
-
-        float value;
-        try {
-            value = atof(valueStr.c_str());
-        } catch (const std::exception& e) {
-            std::cerr << "Error: invalid value => " << valueStr << std::endl;
-            continue;
-        }
        //std::cout << "\ndate: " << date << std::endl;
        //std::cout << "\nvalue: " << value << std::endl;
-        if(!validateInput(date, value))
+        if(!validateInput(date, valueStr))
             continue;
+        double value = std::atof(valueStr.c_str());
         if(data.find(date) != data.end()){
             result = data[date] * value;
             std::cout << date << " => " << value << " = " << result << std::endl;
-
         } else {
             std::map<std::string, double>::const_iterator it;
             it = data.lower_bound(date);
@@ -121,7 +101,7 @@ void BitcoinExchange::calculatePrintExchange(const std::string &filename){
     file.close();
 }
 
-bool BitcoinExchange::validateInput(std::string date, double value){
+bool BitcoinExchange::validateInput(std::string date, std::string valueStr){
     if(date.length() != 10){
         std::cerr << "Error: invalid date format =>" << date << std::endl;
         return false;
@@ -136,7 +116,27 @@ bool BitcoinExchange::validateInput(std::string date, double value){
             return false;
         }
     }
-    
+
+    valueStr.find(".");
+    if ( valueStr.find(".") == 0 || valueStr.find(".") == valueStr.length() - 1) {
+        std::cerr << "Error: not a digit number" << std::endl;
+        return false;
+    }
+
+    int decimalPointCount = std::count(valueStr.begin(), valueStr.end(), '.');
+    if (decimalPointCount > 1) {
+        std::cerr << "Error: not a digit number" << std::endl;
+        return false;
+    }
+
+    for (std::string::const_iterator it = valueStr.begin(); it != valueStr.end(); ++it) {
+        if (!isdigit(*it) && *it != '.') {  // Allow decimal points and negative signs
+            std::cerr << "Error: not a digit number" << std::endl;
+            return false;
+        }
+    }
+
+    double value = std::atof(valueStr.c_str());
     if(value < 0){
         std::cerr << "Error: not a positive number" << std::endl;
         return false;

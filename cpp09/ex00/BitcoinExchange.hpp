@@ -28,7 +28,7 @@ public:
     void readData();
     void debugPrintData() const;
     void calculatePrintExchange(const std::string &filename);
-    bool validateInput(std::string date, double value);
+    bool validateInput(std::string date, std::string value);
 };
 
 
