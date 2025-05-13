@@ -1,5 +1,4 @@
 
-// ex00 use map ex01 list, ex02 vector qeueu stack
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
@@ -12,8 +11,6 @@
 #include <cstdlib>
 #include <iomanip>
 #include <cctype>
-
-
 
 class BitcoinExchange
 {

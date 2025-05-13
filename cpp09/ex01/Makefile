@@ -22,6 +22,8 @@ fclean : clean
 	$(RM) $(NAME)
 
 clean :
-	$(RM) $(OBJS) $(NAME)
+	$(RM) $(OBJS)
 
 re : fclean all
+
+.PHONY: all clean fclean re
