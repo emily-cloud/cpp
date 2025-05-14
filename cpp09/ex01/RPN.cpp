@@ -100,10 +100,6 @@ void RPN::printResult() {
 }
 
 void RPN::clearStacks() {
-    while(!numbers.empty()){
-        numbers.pop();
-    }
-    while(!expressions.empty()){
-        expressions.pop();
-    }
+    numbers.clear();
+    expressions.clear();
 }

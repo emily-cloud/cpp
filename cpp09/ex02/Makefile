@@ -1,4 +1,4 @@
-NAME = RPN
+NAME =  PmergeMe
 
 CPP = c++
 
@@ -6,7 +6,7 @@ CFLAGS = -Werror -Wall -Wextra -std=c++98
 
 RM = rm -rf
 
-SRCS = main.cpp RPN.cpp
+SRCS = main.cpp PmergeMe.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
