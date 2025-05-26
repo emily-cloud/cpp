@@ -13,6 +13,7 @@
 
 class PmergeMe{
 private:
+    std::string input;
     std::vector<int> vectorData;
     std::deque<int> dequeData;
     std::vector<int> sortedVector;
@@ -27,10 +28,13 @@ public:
     PmergeMe& operator=(const PmergeMe &other);
     ~PmergeMe();
 
-    void readInput(int argc, char **argv);
+    void prepareReadInput(int argc, char **argv);
+    void readInputToContainer(std::string type);
     bool valideInputSyntax(std::string input);
-    void sortVector();
-    void sortDeque();
+    void readSortVector();
+    void readSortDeque();
+    void sortVectorAlgorithm();
+    void sortDequeAlgorithm();
     void printOutput() const;
     void clearData();
 };

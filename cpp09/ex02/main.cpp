@@ -11,9 +11,9 @@ int main(int argc, char** argv){
     }
 
     PmergeMe pmergeme;
-    pmergeme.readInput(argc, argv);
-    pmergeme.sortVector();
-    pmergeme.sortDeque();
+    pmergeme.prepareReadInput(argc, argv);
+    pmergeme.readSortVector();
+    pmergeme.readSortDeque();
     pmergeme.printOutput();
     pmergeme.clearData();
     return 0;

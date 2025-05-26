@@ -4,6 +4,7 @@
 PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(const PmergeMe &other){
+    input = other.input;
     vectorData = other.vectorData;
     dequeData = other.dequeData;
     sortedVector = other.sortedVector;
@@ -26,24 +27,18 @@ PmergeMe& PmergeMe::operator=(const PmergeMe &other){
 
 PmergeMe::~PmergeMe() {}
 
-void PmergeMe::readInput(int argc, char **argv){
-    std::string input;
+void PmergeMe::prepareReadInput(int argc, char **argv){
+    std::string rawInput;
     for(int i = 1; i < argc; i++){
-        input += argv[i];
-        input += " ";
+        rawInput += argv[i];
+        rawInput += " ";
     }
 
-    if(!valideInputSyntax(input))
+    if(!valideInputSyntax(rawInput))
         return;
-    
-    std::istringstream iss(input);
-    std::string number;
-    while(iss >> number){
-        int num =  stoi(number);
-        vectorData.push_back(num);
-        dequeData.push_back(num);
-    }
+    input = rawInput;
 }
+
 
 bool PmergeMe::valideInputSyntax(std::string input){
     std::vector<int> numbers;
@@ -91,30 +86,103 @@ bool PmergeMe::valideInputSyntax(std::string input){
     return true;
 }
 
-void PmergeMe::sortVector(){
-    clock_t start = clock();
-    for(size_t i = 0; i < vectorData.size(); i++){
-        sortedVector.push_back(vectorData[i]);
+void PmergeMe::readInputToContainer(std::string type){
+   if(type == "vector"){
+        std::istringstream iss(input);
+        std::string number;
+        while(iss >> number){
+            int num =  stoi(number);
+            vectorData.push_back(num);
+    } 
+    }else if(type == "deque"){
+        std::istringstream iss(input);
+        std::string number;
+        while(iss >> number){
+            int num =  stoi(number);
+            dequeData.push_back(num);
         }
+    }
+}
+
+void PmergeMe::readSortVector(){
+    clock_t start = clock();
+    readInputToContainer("vector");
+    sortVectorAlgorithm();
     
-    std::sort(sortedVector.begin(), sortedVector.end());
+    // for(size_t i = 0; i < vectorData.size(); i++){
+    //     sortedVector.push_back(vectorData[i]);
+    //     }
+    
+    // std::sort(sortedVector.begin(), sortedVector.end());
     clock_t end = clock();
 
     vectorDuration  = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 }
 
-void PmergeMe::sortDeque(){
-    clock_t start = clock();
-    for(size_t i = 0; i < dequeData.size(); i++){
-        sortedDeque.push_back(dequeData[i]);
+void PmergeMe::sortVectorAlgorithm(){
+    std::vector<int> bigVector;
+    std::vector<int> smallVector;
+    for(size_t i = 0; i < vectorData.size(); i+2){
+        int num1 = vectorData[i];
+        int num2 = vectorData[i + 1];
+        if(num1 > num2){
+            smallVector.push_back(num2);
+            bigVector.push_back(num1);
+        } else {
+            smallVector.push_back(num1);
+            bigVector.push_back(num2);
         }
-    
-    std::sort(sortedDeque.begin(), sortedDeque.end());
-    clock_t end = clock();
+    }
+    if(vectorData.size() % 2 != 0){
+        bigVector.push_back(vectorData[vectorData.size() - 1]);
+    }
+    //sort smallVector
+    for(size_t i = 0; i < smallVector.size(); i++){
+        for(size_t j = i + 1 ; j < bigVector.size(); j++){
+            if(bigVector[i] > bigVector[j]){
+                std::swap(bigVector[i], bigVector[j]);
+            }
+        }
+    }
 
+    // find the position of the biggest number in the original vector
+    int biggestNum = bigVector[bigVector.size() - 1];
+    size_t pos = 0;
+    for(size_t i = 0; i < vectorData.size(); i++){
+        if(vectorData[i] == biggestNum){
+            pos = i;
+            break;
+        }
+    }
+
+    // insert the biggest number's partner from the original vector in the sorted bigvector
+    if(pos % 2 == 0){
+        int index = pos + 1;
+    } else{
+        int index = pos - 1;
+    }
+
+
+}
+
+
+void PmergeMe::readSortDeque(){
+    clock_t start = clock();
+    readInputToContainer("deque");
+    sortDequeAlgorithm();
+    // system sort
+    // for(size_t i = 0; i < dequeData.size(); i++){
+    //     sortedDeque.push_back(dequeData[i]);
+    //     }
+    
+    // std::sort(sortedDeque.begin(), sortedDeque.end());
+    clock_t end = clock();
     dequeDuration  = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 }
 
+void PmergeMe::sortDequeAlgorithm(){
+
+}
 
 void PmergeMe::printOutput() const{
     if(vectorData.size() == 0){
